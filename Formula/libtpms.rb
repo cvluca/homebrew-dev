@@ -9,7 +9,7 @@ class Libtpms < Formula
   depends_on "automake" => :build
   depends_on "libtool" => :build
   depends_on "pkg-config" => :build
-  depends_on "openssl@3"
+  depends_on "openssl@1.1"
 
   def install
     system "./autogen.sh", "--prefix=#{prefix}", "--with-openssl", "--with-tpm2"
