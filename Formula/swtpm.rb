@@ -10,11 +10,11 @@ class Swtpm < Formula
   depends_on "gawk" => :build
   depends_on "json-glib" => :build
   depends_on "socat" => :build
-  depends_on "cvluca/dev/libtpms"
+  depends_on "libtpms"
   depends_on "glib"
   depends_on "gnutls"
   depends_on "libtasn1"
-  depends_on "openssl@1.1"
+  depends_on "openssl@3"
 
   def install
     system "./autogen.sh", "--prefix=#{prefix}", "--with-openssl"
