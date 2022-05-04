@@ -8,12 +8,12 @@ class Swtpm < Formula
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "gawk" => :build
+  depends_on "glib" => :build
   depends_on "json-glib" => :build
+  depends_on "libtool" => :build
   depends_on "socat" => :build
-  depends_on "libtpms"
-  depends_on "glib"
-  depends_on "gnutls"
   depends_on "libtasn1"
+  depends_on "libtpms"
   depends_on "openssl@3"
 
   def install
