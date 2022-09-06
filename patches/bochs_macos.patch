@@ -1,0 +1,13 @@
+--- a/gui/wxmain.cc	2021-03-13 17:54:06.000000000 +0800
++++ b/gui/wxmain.cc	2022-09-06 08:33:33.000000000 +0800
+@@ -93,9 +93,7 @@
+ //#include "bitmaps/configbutton.xpm"
+ #include "bitmaps/userbutton.xpm"
+ #include "bitmaps/saverestore.xpm"
+-#ifdef __WXGTK__
+ #include "icon_bochs.xpm"
+-#endif
+ 
+ // FIXME: ugly global variable that the bx_gui_c object in wx.cc can use
+ // to access the MyFrame.
+
