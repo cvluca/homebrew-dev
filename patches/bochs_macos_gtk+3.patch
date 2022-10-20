@@ -1,5 +1,5 @@
---- configure	2022-10-20 22:03:34.000000000 +0800
-+++ configure2	2022-10-20 22:03:31.000000000 +0800
+--- a/configure	2022-10-20 22:03:34.000000000 +0800
++++ b/configure	2022-10-20 22:03:31.000000000 +0800
 @@ -24968,28 +24968,30 @@
  
  # some display libraries and the enhanced debugger may depend on the GTK+ software package
