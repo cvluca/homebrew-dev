@@ -1,0 +1,53 @@
+--- configure	2022-10-20 22:03:34.000000000 +0800
++++ configure2	2022-10-20 22:03:31.000000000 +0800
+@@ -24968,28 +24968,30 @@
+ 
+ # some display libraries and the enhanced debugger may depend on the GTK+ software package
+ bx_have_gtk_version=0
+-# pkg-config is required to set TOOLKIT_CXXFLAGS and LIBS
+-if test "$PKGCONFIG" != not_found; then
+-# if wxGTK is based on GTK 3.0, use it for gui debugger to avoid conflicts
+-if test "$with_wx" = yes -a "$wx_needs_gdk_version" = 3; then
+-  pkg-config --exists gtk+-3.0
+-  if test x$? = x0; then
+-    TOOLKIT_CXXFLAGS="`pkg-config --cflags gtk+-3.0`"
+-    LIBS="$LIBS `pkg-config --libs gtk+-3.0`"
+-    bx_have_gtk_version=3
+-  fi
+-else
+-  pkg-config --exists gtk+-2.0
+-  if test x$? = x0; then
+-    TOOLKIT_CXXFLAGS="`pkg-config --cflags gtk+-2.0`"
+-    LIBS="$LIBS `pkg-config --libs gtk+-2.0`"
+-    bx_have_gtk_version=2
++if test "$needs_gtk2" = 1; then
++  # pkg-config is required to set TOOLKIT_CXXFLAGS and LIBS
++  if test "$PKGCONFIG" != not_found; then
++    # if wxGTK is based on GTK 3.0, use it for gui debugger to avoid conflicts
++    if test "$with_wx" = yes -a "$wx_needs_gdk_version" = 3; then
++      pkg-config --exists gtk+-3.0
++      if test x$? = x0; then
++        TOOLKIT_CXXFLAGS="`pkg-config --cflags gtk+-3.0`"
++        LIBS="$LIBS `pkg-config --libs gtk+-3.0`"
++        bx_have_gtk_version=3
++      fi
++    else
++      pkg-config --exists gtk+-2.0
++      if test x$? = x0; then
++        TOOLKIT_CXXFLAGS="`pkg-config --cflags gtk+-2.0`"
++        LIBS="$LIBS `pkg-config --libs gtk+-2.0`"
++        bx_have_gtk_version=2
++      fi
++    fi
++  else
++    echo "ERROR: pkg-config was not found, unable to access the gtk+-2.0 package."
++    echo "The gui debugger support is disabled now."
+   fi
+ fi
+-else
+-echo "ERROR: pkg-config was not found, unable to access the gtk+-2.0 package."
+-echo "The gui debugger support is disabled now."
+-fi
+ 
+ if test "$display_libs" = " wxWidgets"; then
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for default configuration interface" >&5
